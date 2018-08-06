@@ -1,0 +1,14 @@
+<!--chess.wxml-->
+
+    <view >
+
+        <canvas canvas-id="firstCanvas" onclick="getit()" />
+
+
+    </view>
+    <view>
+        <input id="btn1" type="button" value="开始" onclick="play();" />
+
+    </view>
+
+

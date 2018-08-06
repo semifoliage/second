@@ -1,0 +1,61 @@
+/* pages/inputDataTwo/inputDataTwo.wxss */
+page {
+    background: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flex-wrp {display: flex; margin-bottom: 20px; margin-top: 20px}
+.bc_green {background: green;width:200px; height: 100px;}
+.bc_red {background: red;width:100px; height: 100px;}
+.bc_blue {background: blue;width:100px; height: 100px;}
+.bc_whitesmoke {background: whitesmoke;width:auto; height: 20%;}
+.bc_white {background: white;width:auto; height: auto;}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 50rpx;
+  border-radius: 50%;
+  
+}
+.date_format{
+  font-size: 14rpx, large;
+  font-style:italic;
+
+}
+.input-format{
+  margin-top: 12rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  font-size:70%;
+  
+
+}
+.txt_format{
+  font-size:60%;
+  color: black;
+   
+}
+.num_format{
+  font:50, bold;
+  
+}
+
+.usermotto {
+  margin-top: 200px, bold;
+}
+.flex-wrp {display: flex;}
+.bc_green {background: green;width:100px; height: 100px;}
+.bc_red {background: red;width:100px; height: 100px;}
+.bc_blue {background: blue;width:100px; height: 100px;}
+
+.navigator-hover {
+    color:blue;
+}

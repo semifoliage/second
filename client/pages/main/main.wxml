@@ -1,0 +1,52 @@
+<!--main.wxml-->
+
+<view class="container">
+    <!--headbar -->
+    <view class="userinfo" >
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : '../../materials/flappybird_topic.png'}}"
+            background-size="cover"
+        ></image>
+        <label>{{service.pageTitle}} \t {{userName}}</label>
+        
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : '../../materials/user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+         
+    </view>
+      <!-- info display -->
+    <view class="uploader">
+        <view class="mainBoxTwo" >
+          <view class="uploader-text">
+            <label>{{service.lastHDateText}}</label>
+            <text >{{service.lastHDate}}</text>
+          </view>
+          <view class="uploader-text">
+            <label>{{service.lastHWeightText}}</label>
+            <text>{{service.lastHWeight}}</text>
+          </view>
+          <view class="uploader-text">
+            <label>{{service.nextHDateText}}</label>
+            <text>{{service.nextHDate}}</text>
+          </view>   
+           <view class="uploader-text">
+            <label>{{service.nextHstartText}}</label>
+            <text>{{service.nextHstart}}</text>
+          </view>   
+        </view>
+    </view>
+
+
+    <!-- function button -->
+    <view class="uploader">
+      <button id="inputData1st" disabled="{{service.beforeHstatus}}" bindtap="inputData1stButton" class="tunnel-text">{{service.inputDataOne}}</button>
+      <button id="inputData2nd" disabled="{{service.afterHstatus}}" bindtap="inputData2ndButton" class="tunnel-text">{{service.inputDataTwo}}</button>
+      <button bindtap="action2" class="tunnel-text" >{{service.queryData}}</button>
+        <button bindtap="chessAction" >chess</button>
+       
+    </view>
+</view>

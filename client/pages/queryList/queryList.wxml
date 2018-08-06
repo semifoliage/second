@@ -1,0 +1,35 @@
+<!--queryList.wxml-->
+
+    <!-- 用户登录测试 -->
+    <view class="userinfo" >
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : '../../materials/flappybird_topic.png'}}"
+            background-size="cover"
+        ></image>
+        <view>             
+            <button class="userinfo-nickname" bindtap="login">{{logged ? userInfo.nickName : 'List Last H data'}}</button>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+        </view>
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : '../../materials/user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+        <view>             
+            <button class="userinfo-nickname" bindtap="login">{{logged ? userInfo.nickName : 'List All data'}}</button>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+        </view>
+    </view>
+
+    <!-- scroll view -->
+    <view class="section section_gap">
+      <view class="section__title">horizontal scroll</view>
+      <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <view id="green" class="scroll-view-item_H bc_green"></view>
+        <view id="red"  class="scroll-view-item_H bc_red"></view>
+      
+      </scroll-view>
+    </view>
+ 
+

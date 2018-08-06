@@ -1,0 +1,51 @@
+<!-- navigator.wxml -->
+<view style="text-align:center"> {{title}} </view>
+<view class="section">
+  <view class="section__title ">{{pageTitle}}</view>
+  <view class="flex-wrp" style="flex-direction:row"> 
+    <view class="flex-wrp" style="flex-direction:column;"> 
+      <view class="flex-item bc_whitesmoke">
+        <text class="user-motto userinfo-avata"  >{{weight_lasttime}}</text>         
+        <label class="userinfo-avatar">{{weight_lasttimeNum}}</label>
+         
+        <view class="flex-wrp bc_white" style="flex-direction:row">
+          <view class="flex-wrp " style="flex-direction:column">
+            <label class="txt_format">{{beforeWeight}}</label>
+            <input 
+                    placeholder='Please input' 
+                    class='input-format' 
+                    bindinput="beforeWeightKeyInput" 
+                    auto-focus
+                    style='number'
+                    />
+          </view>
+          <view class="flex-wrp" style="flex-direction:column">
+            <label class="txt_format">{{weightToH}}</label>
+            <text class='num_format'>{{weightToHNum}}</text>
+          </view>
+        </view>
+
+        <view class="flex-wrp bc_whitesmoke" style="flex-direction:row">
+            <view class="flex-wrp " style="flex-direction:column">
+              <label class="txt_format">{{beforeWeight}}</label>
+              <input placeholder='Please input' class='input-format' auto-focus>input</input>
+            </view>
+            <view class="flex-wrp" style="flex-direction:column">
+              <label class="txt_format">{{weightToH}}</label>
+              <input placeholder='Please input' class='input-format' auto-focus>{{weightToHNum}}</input>
+            </view>
+            <view class="flex-wrp" style="flex-direction:column">
+              <label class="txt_format">{{weightToH}}</label>
+              <input placeholder='Please input' class='input-format'  auto-focus style='number' >{{weightToHNum}}</input>
+            </view>
+        </view>
+        
+      </view>
+      
+      </view>
+      
+    </view>
+     <icon type="search" size="20" color="rgb(0,255,255)"/>
+    <button plain='ture' color="rgb(0,255,255)" >{{submit}}</button>
+    <button>{{submit}}</button>
+</view>

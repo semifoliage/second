@@ -1,0 +1,68 @@
+<!-- input data one.wxml -->
+<view style="text-align:center"> {{title}} </view>
+<view class="section">{{service.pageTitle}}   
+  <form>
+      <view class="flex-wrp" style="flex-direction:row"> 
+        <view class="flex-wrp" style="flex-direction:column;"> 
+          <form class="flex-item bc_whitesmoke">
+            <text class="user-motto userinfo-avata"  >{{service.weight_lasttime}}</text>         
+            <label class="userinfo-avatar">{{service.weight_lasttimeNum}}</label>
+            
+            <view class="flex-wrp bc_white" style="flex-direction:row">
+              <view class="flex-wrp " style="flex-direction:column">
+                <label class="txt_format">{{service.beforeWeight}}</label>
+                <input 
+                        placeholder='Please input' 
+                        class='input-format' 
+                        bindinput="beforeWeightKeyInput" 
+                        auto-focus
+                        type='number'
+                        style='number'
+                        />
+              </view>
+              <view class="flex-wrp" style="flex-direction:column">
+                <label class="txt_format">{{service.weightToH}}</label>
+                <text class='num_format'>{{weightToHNum}}</text>
+              </view>
+            </view>
+
+            <view class="flex-wrp bc_whitesmoke" style="flex-direction:row">
+                <view class="flex-wrp " style="flex-direction:column">
+                  <label class="txt_format">{{service.bloodHigh}}</label>
+                  <input 
+                      placeholder='Please input' 
+                      class='input-format' 
+                      bindinput="changeInput"
+                      type='number'
+                      auto-focus  >input</input>
+                </view>
+                <view class="flex-wrp" style="flex-direction:column">
+                  <label class="txt_format">{{service.bloodLow}}</label>
+                  <input 
+                      placeholder='Please input' 
+                      class='input-format' 
+                      bindinput="changeInput"
+                      type='number'
+                      auto-focus>{{weightToHNum}}</input>
+                </view>
+                <view class="flex-wrp" style="flex-direction:column">
+                  <label class="txt_format">{{service.heartBit}}</label>
+                  <input 
+                      placeholder='Please input' 
+                      class='input-format'  
+                      bindinput="changeInput"
+                      type='number'
+                      auto-focus style='number' >{{service.weightToHNum}}</input>
+                </view>
+            </view>
+            
+          </form>
+          
+          </view>
+          
+        </view>
+        <icon type="search" size="20" color="rgb(0,255,255)"/>
+        <button id="item-{{id}}" plain='false' disabled="{{data.logged}}" bindtap="inputOneSave" >{{service.save}}</button>
+        <button plain='ture' disabled="{{logged}}" bindtap="inputOneSaveNext" >{{service.saveNext}}</button>
+   </form> 
+</view>

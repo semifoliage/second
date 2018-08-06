@@ -1,0 +1,14 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wx8cf847578819eb2b",
+	"projectname": "secondApp",
+	"condition": {}
+}

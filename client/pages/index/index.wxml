@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- 用户登录测试 -->
+    <view class="userinfo" >
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : './flappybird_topic.png'}}"
+            background-size="cover"
+        ></image>
+         
+        <view>
+            <text class="userinfo-nickname">{{ }}</text>
+            <button open-type="getUserInfo" bindtap="login" bindgetuserinfo="getUserInfo">{{logged ? userInfo.nickName : '点击测试登录接口'}}</button>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+             
+        </view>
+
+        <block >
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+          </block>
+        
+    </view>     
+
+
+    <!-- 上传图片测试 -->
+    <view class="uploader">
+        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
+            <text>to be update</text>
+        </navigator>
+    </view>
+
+    <view class="addCgi">
+      <button>{{dateToday}}</button>
+      <navigator 
+            url="../main/main?title=queryUser&user={{userInfo.nickName}}"  
+            open-type="navigate" 
+            hover-class="navigator-hover">跳转到新页面</navigator>
+    </view>
+</view>
