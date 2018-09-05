@@ -2,55 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1205f740-1b84-4167-9b02-1b9cb63a8729" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/materials/th.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/queryDetail/queryDetail.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/queryDetail/queryDetail.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/utils/services.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/allRecordsSv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/checkUserSv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/inputAfterHSv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/trySample.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/userSv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/helper/mysqldb.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../firstApp/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../firstApp/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index/index2.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index/index2.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/inputDataOne/inputDataOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/inputDataOne/inputDataOne.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/inputDataOne/inputDataOne.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/inputDataOne/inputDataOne.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/inputDataTwo/inputDataTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/inputDataTwo/inputDataTwo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/inputDataTwo/inputDataTwo.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/inputDataTwo/inputDataTwo.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/main/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/main/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/main/main.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/main/main.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/main/main.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/main/main.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/queryList/queryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryList/queryList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/queryList/queryList.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryList/queryList.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/queryList/queryList.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryList/queryList.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/queryuser/queryuser.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryuser/queryuser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/queryuser/queryuser.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryuser/queryuser.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/queryuser/queryuser.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryuser/queryuser.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tools/generalTool.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/queryDetail/queryDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utils/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/utils/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/lib/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/lib/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/lib/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/vendor/wafer2-client-sdk/lib/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/inputBeforeHSv.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/inputBeforeHSv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/queryuser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/startInfoSv.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/startInfoSv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/helper/helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/helper/helper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,12 +31,12 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="iml" value="2" />
-          <entry key="js" value="335" />
+          <entry key="js" value="336" />
           <entry key="json" value="28" />
           <entry key="md" value="4" />
           <entry key="png" value="1" />
           <entry key="sql" value="1" />
-          <entry key="wxml" value="67" />
+          <entry key="wxml" value="68" />
           <entry key="wxss" value="14" />
           <entry key="xml" value="4" />
         </counts>
@@ -93,17 +46,17 @@
           <entry key="IDEA_MODULE" value="2" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="28" />
-          <entry key="JavaScript" value="335" />
+          <entry key="JavaScript" value="336" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="SQL" value="1" />
-          <entry key="XML" value="71" />
+          <entry key="XML" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="20968" />
           <entry key="json" value="59" />
-          <entry key="wxml" value="1324" />
+          <entry key="wxml" value="1334" />
           <entry key="wxss" value="621" />
         </counts>
       </usages-collector>
@@ -112,7 +65,7 @@
           <entry key="JSON" value="59" />
           <entry key="JavaScript" value="20968" />
           <entry key="PLAIN_TEXT" value="621" />
-          <entry key="XML" value="1324" />
+          <entry key="XML" value="1334" />
         </counts>
       </usages-collector>
     </session>
@@ -120,65 +73,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/routes/index.js">
+        <entry file="file://$PROJECT_DIR$/client/pages/queryList/queryList.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/tools/cAuth.sql">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/tools/initdb.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/middlewares/response.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project.config.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/secondApp.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/controllers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/process.prod.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="391">
+              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -225,7 +123,6 @@
         <option value="$PROJECT_DIR$/client/config.js" />
         <option value="$PROJECT_DIR$/client/pages/queryList/queryList.wxss" />
         <option value="$PROJECT_DIR$/client/app.json" />
-        <option value="$PROJECT_DIR$/client/pages/queryList/queryList.wxml" />
         <option value="$PROJECT_DIR$/client/pages/queryList/queryList.js" />
         <option value="$PROJECT_DIR$/client/pages/queryDetail/queryDetail.wxss" />
         <option value="$PROJECT_DIR$/client/utils/services.js" />
@@ -243,6 +140,7 @@
         <option value="$PROJECT_DIR$/server/controllers/login.js" />
         <option value="$PROJECT_DIR$/client/pages/index/index.wxml" />
         <option value="$PROJECT_DIR$/client/pages/index/index.js" />
+        <option value="$PROJECT_DIR$/client/pages/queryList/queryList.wxml" />
       </list>
     </option>
   </component>
@@ -269,37 +167,26 @@
             <path>
               <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="queryList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="middlewares" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondApp" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -310,7 +197,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535964833989" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536131349129" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -451,22 +338,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/pages/queryList/queryList.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app.wxss">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="24" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/vendor/wafer2-client-sdk/package.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -697,6 +570,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/pages/queryList/queryList.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
         </state>
       </provider>
     </entry>
