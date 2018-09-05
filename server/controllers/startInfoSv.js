@@ -1,11 +1,13 @@
 //startInfoSv.js
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+var helper = require('../helper/helper.js')
+var db=require('../helper/mysqldb.js');
+
+/*var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Business_1',
   database: 'app1'
-});
+});*/
  
      
     
@@ -50,41 +52,55 @@ module.exports = async (ctx, next) => {
       ctx.state.code = -1
   }
   */
-  var results = [];
-  var data=[];
-  var queryString = 'select * from tHdata where userAccount= ?' ; 
-  
-  connection.connect(function (err) {
-    if (err) {
-      console.error("error connection: ");
-      return;
-    }
-    console.log('Demo connection sueccess! ');
-  });
 
-  data.push(ctx.request.query.userAccount);
-  
-  connection.query(queryString, data, function (err, rows, fields) {
-    if (err) throw err;
-    console.log('----------StartInfo select --------');
-    console.log(rows);
-
-    iss=rows.length;
-    for (i in rows) {
-      results.push(rows[i]);
-    };
-  });
-
-  console.log('-------StartInfo close connection------');
-  connection.end();
-  
 
   ctx.response.type = 'text';
   //responce body
-  ctx.body = JSON.stringify(results);
+  ctx.body = await getUser('Bobw');
   
 };
 
+function getUser(user){
+    return new Promise((resolve, reject)=>{
+    var results = [];
 
+    var queryString = 'select * from tHdata where nickName= ?' ;
+    var data=[];
+    data.push(user);
+
+    db.query(queryString, [user], function(res){
+        for (var i in res){
+            results.push(res[i]);
+        };
+        resolve(results);
+    } );
+
+
+    /*connection.connect(function (err) {
+    if (err) {
+         console.error("error connection: ");
+         return;
+         }
+         console.log('Demo connection sueccess! ');
+        });*/
+
+
+    /*
+    connection.query(queryString, data, function (err, rows, fields) {
+        if (err) throw err;
+        console.log('----------StartInfo select --------');
+        console.log(rows);
+
+        iss=rows.length;
+        for (i in rows) {
+                  results.push(rows[i]);
+            };
+        });
+
+              console.log('-------StartInfo close connection------');
+              connection.end();
+          ;*/
+    });
+}
 
 //connection.end();

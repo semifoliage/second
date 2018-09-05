@@ -1,3 +1,4 @@
+const app = getApp()
 var utils = require('./utils');
 var constants = require('./constants');
 var Session = require('./session');
@@ -27,7 +28,7 @@ var LoginError = (function () {
 /**
  * 微信登录，获取 code 和 encryptData
  */
-var getWxLoginResult = function getLoginCode(callback) {
+var getWxLoginResult = function getLoginCode(data, callback) {
     wx.login({
         success: function (loginResult) {
 
@@ -51,20 +52,44 @@ var getWxLoginResult = function getLoginCode(callback) {
         },
         */
          
-          // console.log('code---'+loginResult.code)
+          //console.log('code---');
+          // console.log(loginResult)
           if (loginResult.code) {
               //发起网络请求
               wx.request({
                 url: urlLink, //'https://test.com/Login',
                 data: {
-                  code: loginResult.code
+                  code: loginResult.code,
+                  nickName: data
                 },
                 success: function (res) {
                   // 登录成功
                   if (res.statusCode === 200) {
                     console.log(res.data.sessionId)// 服务器回包内容
+                  };
+                  //collect results
+                  console.log('login result');
+                  console.log(res.data);
+                  var resultString=res.data;
+                  console.log(typeof(resultString));
+                  if (typeof(resultString)=='string'){
+                      var result=resultString.split('}');
+                      var resultObj = JSON.parse(result[0] + '}');
+                  }else if(typeof(resultString)=='object') {
+                      var resultObj=resultString;
                   }
 
+                  Session.set(resultString.session_key);
+                  //set app global data
+                  //app._openId=resultString.openid;
+                  //app._nickName=resultString.nickName;
+                  //add to callback
+                  callback(null, {
+                    openid: resultString.openid,
+                    session_key: resultString.session_key
+                  });
+
+                  return resultString;
                 },
                 fail: function(err){
                   console.log(url + ' error ' + err.errMsg)
@@ -103,33 +128,40 @@ var defaultOptions = {
  * @param {Function} options.fail(error) 登录失败后的回调函数，参数 error 错误信息
  */
 var login = function login(options) {
-  
+    
+
     options = utils.extend({}, defaultOptions, options);
-  
+
     if (!defaultOptions.loginUrl) {
         options.fail(new LoginError(constants.ERR_INVALID_PARAMS, '登录错误：缺少登录地址，请通过 setLoginUrl() 方法设置登录地址'));
         return;
     }
-
-    var doLogin = () => getWxLoginResult(function (wxLoginError, wxLoginResult) {
+    console.log(options.data);
+    var doLogin = () => getWxLoginResult(options.data.nickName, function (wxLoginError, wxLoginResult) {
         if (wxLoginError) {
             options.fail(wxLoginError);
             return;
         }
       
         
-        var userInfo = wxLoginResult.userInfo;
+        var _openid = wxLoginResult.openid;
+        var _sessionkey=wxLoginResult.session_key;
+        options.success(wxLoginResult.openid);
 
+
+
+        /*
         // 构造请求头，包含 code、encryptedData 和 iv
         var code = wxLoginResult.code;
         var encryptedData = wxLoginResult.encryptedData;
         var iv = wxLoginResult.iv;
         var header = {};
 
+        
         header[constants.WX_HEADER_CODE] = code;
         header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
         header[constants.WX_HEADER_IV] = iv;
-      console.log('login.js options')
+      console.log('login.dologin.wxLoginResult.callFunciton options')
       console.log(options.data)
         // 请求服务器登录地址，获得会话信息
         wx.request({
@@ -167,7 +199,10 @@ var login = function login(options) {
                 options.fail(error);
             },
         });
+        */
+
     });
+    //console.log(doLogin());
 
     var session = Session.get();
     if (session) {
@@ -183,6 +218,8 @@ var login = function login(options) {
         });
     } else {
         doLogin();
+        console.log('after check session')
+        
     }
 };
 

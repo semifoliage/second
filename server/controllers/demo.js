@@ -1,5 +1,8 @@
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+var helper = require('../helper/helper.js')
+var db=require('../helper/mysqldb.js');
+
+/*var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Business_1',
@@ -31,7 +34,7 @@ connection.query(queryString, function (err, rows, fields) {
   };
 });
 
-console.log('-------get to page------');
+console.log('-------get to page------');*/
   
 
 
@@ -46,36 +49,35 @@ module.exports = async (ctx, next) => {
   } else {
       ctx.state.code = -1
   }*/
-  /*
-  var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Business_1',
-    database: 'app1'
-  });
-  connection.connect(function (err) {
-  if (err) {
-    console.error("error connection: ");
-    return;
-  }
-  console.log('Demo connection sueccess! ');
-});
-  query = 'select * from tHdata where userAccount= ' + ctx.request.query.account;
-  connection.query(query, function (err, rows, fields) {
-    if (err) throw err;
-    console.log('----------Demo select --------');
-    console.log(rows);
 
-    for (i in rows) {
-      results.push(rows[i]);
-    };
-  }); 
-   */
-
-  ctx.response.type = 'JSON';
+  var sql=  'select * from tHdata ' ;
+  //var user= ctx.request.body;
+  var data='Bobw'
+  ctx.response.type = 'text';
   //responce body
-  ctx.body = JSON.stringify(results);
-  connection.end();
+  ctx.body = await getInfo(sql, data);
+
 };
  
 //connection.end();
+
+//query data from the db.query module
+function getInfo(sql, user){
+    return new Promise((resolve, reject)=>{
+    var results = [];
+
+    var queryString='select * from tHdata';
+    var queryData=[user];
+
+    db.queryStar(queryString, function(res){
+        for (var i in res){
+            results.push(res[i]);
+        };
+
+        resolve(results);
+            } );
+
+
+    });
+}
+

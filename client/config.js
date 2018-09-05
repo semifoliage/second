@@ -4,6 +4,7 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://kt3pqsbq.qcloud.la';
+//var host ='https://518516255.softworklife.club';
 
 var config = {
 
@@ -24,7 +25,22 @@ var config = {
         uploadUrl: `${host}/weapp/upload`,
 
         //queryuser
-        queryuserUrl: `${host}/weapp/queryuser`
+        queryuserUrl: `${host}/weapp/queryuser`,
+
+        //checkuser
+        checkuserUrl: `${host}/weapp/checkuser`,
+
+        //check initial date
+        userHInfoUrl: `${host}/weapp/userhinfo`,
+
+        //input the bH info
+        inputFirstDataUrl: `${host}/weapp/input`,
+
+        //input the bH info
+        inputSecondDataUrl: `${host}/weapp/inputtwo`,
+
+         //input the bH info
+         queryAllDataUrl: `${host}/weapp/allhdata`,
     }
 };
 

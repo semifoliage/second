@@ -110,4 +110,24 @@ var showModel = (title, content) => {
     })
 }
 
-module.exports = { formatTime, formatDate, formatAll, showBusy, showSuccess, showModel, dateCalcul, todayDate}
+//object merge
+
+var objectMerge=(obj1, obj2)=>{
+    if (typeof(obj1)!='Object' || typeof(obj2)!='Object'){
+        return typeof(obj1)+' '+typeof(obj2);
+    }else{
+        var extend={};
+        var merge = function (obj) {
+        	if (obj.hasOwnProperty(prop)) {
+        		// Push each value from `obj` into `extended`
+        		extended[prop] = obj[prop];
+        	}
+        };
+        merge(obj1);
+        merge(obj2);
+
+        return extend;
+    }
+}
+
+module.exports = { formatTime, formatDate, formatAll, showBusy, showSuccess, showModel, dateCalcul, todayDate, objectMerge}

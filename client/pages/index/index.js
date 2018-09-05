@@ -1,4 +1,4 @@
-//index1.js
+//index.js
 const app = getApp()
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
@@ -10,79 +10,182 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     logged: false,
+    openId:'',
     takeSession: false,
     requestResult: '',
+    noNetwork: false,
     imgUrl: '',
     dateToday: util.formatAll(todayDate)//util.dateCalcul(todayDate, 2)//datecalcul(todayDate, 0)
   },
 
+onLoad: function(options){
+    wx.hideTabBar();
+    var that =this;
+
+    //get stored info
+    wx.getStorage({
+          key: 'userRecords',
+          success: function (res) {
+            that.setData({
+                openId: res.data.openId,
+                userInfo: res.data,
+                logged: true
+                });
+            app._userInfo=res.data;
+            app._openId=res.data.openId;
+            wx.showTabBar();
+             }
+          });
+},
 
 
   // 用户登录示例
-  login: function () {
+  loginssss: function () {
     if (this.data.logged) return
     util.showBusy('正在登录')
-    var that = this
+    var that = this;
 
-    // 调用登录接口
-    qcloud.login({
-      success(result) {
-        console.log('qcloud.login success '+result)
-        if (result) {
-          util.showSuccess('登录成功')
-          that.setData({
-            userInfo: result,
-            logged: true
-          })
-        } else {
-          // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-          qcloud.request({
-            //qcloud.login({
-            url: config.service.requestUrl,
-            login: true,
-            success(result) {
-              util.showSuccess('再登录成功')
-              console.log('------>not login fale')
-              console.log(result)
-              if(!result){
+    //get UserInfo
+   wx.getUserInfo({
+                success: function(res) {
                   that.setData({
-                    userInfo: result.data.data,
-                    logged: true
-                  })
-              }
-            },
+                    userInfo: res
 
-            fail(error) {
-              util.showModel('请求失败', error)
-              console.log('request fail', error)
-            }
-          })
-        }
-      },
+                  });
 
-      fail(error) {
-        util.showModel('登录失败', error)
-        console.log('index 登录失败', error)
+                    console.log('collect UserInfo');
+                    console.log(res);
+
+                    // 调用登录接口
+                    qcloud.login({
+                      success(result) {
+                        console.log('qcloud.login success ');
+                        if (result) {
+                          util.showSuccess('登录成功')
+                          that.setData({
+                            openId: result.openid,
+                            logged: true
+                          });
+                          //show the tabbar
+                          wx.showTabBar();
+                          var userRecord={
+                            openId: this.data.openId,
+                            nickName: this.data.userInfo.nickName
+                          };
+                          var checkUserRecord=checkUser(userRecord);
+
+                        } else {
+                          // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
+                            console.log('already logon and query the user record');
+                            qcloud.request({
+                            //qcloud.login({
+                            url: config.service.queryuserUrl,
+                            data: {
+                                    name: res.userInfo.nickName
+                            },
+                            login: true,
+                            success(result) {
+                              util.showSuccess('再登录成功')
+                              //collect data
+                              app._openId=result.data[0].openId;
+                              that.setData({
+                                openId: result.data[0].openId
+                              })
+                              console.log('------>second login and request the user info' );
+                              //show the tabBar
+                              wx.showTabBar();
+                              if(!result){
+                                  that.setData({
+                                    openId: result.data[0].openId,
+                                    logged: true
+                                  })
+                                  app._openid=that.data.openid;  console.log('app._openId'+app._openid);
+                              }
+
+                            },
+
+                            fail(error) {
+                              util.showModel('请求失败', error)
+                              console.log('request fail', error)
+                            }
+                          })
+                        }
+                      },
+
+                      fail(error) {
+                        util.showModel('登录失败', error)
+                        console.log('index 登录失败', error)
+                      }
+                    })
+
       }
-    })
-  },
-  getUserInfo: function (e) {
-    app.logon_user = e.detail.userInfo.nickName
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true,
-      logged: true
+     });
 
-    })
-    console.log('index getUserInfo e.detail')
-    console.log(e.detail)
   },
+
+  getUserInfo: function (e) {
+
+      app._nickName = e.detail.userInfo.nickName;
+      app._userInfo = e.detail.userInfo;
+      var that=this;
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true,
+        logged: true
+      });
+      console.log('index getUserInfo e.detail  collected ');
+
+      //set tabbar shown
+      if(e.data==[]) {
+        util.showSuccess('登录失败');
+        return;
+      }else{
+         ;
+      };
+
+      loginFu(that);
+  },
+
+
 
   //log info
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
+  },
+  //checkUser function. check user openid and nickName are recorded.  if not, create record 
+
+  checkUser: function(user){
+    if(user&&user.openId==''&&user.nickName==''){
+      util.showSuccess('userInfo is empty')
+      return 'userInfo is empty';
+    }else{
+      //query openId is recorded or not
+      qcloud.request({
+        url: `${config.service.host}/weapp/demo`,
+        login: false,
+        data: { openid: user.openId,
+                nickname:user.nickName },
+        method: 'post', 
+        success(result) {
+          util.showSuccess('get userinfo请求成功完成')
+          console.log(result)
+          that.setData({
+            title: options.title     
+
+
+          });
+
+        },
+        fail(error) {
+          util.showModel('请求失败', error);
+          console.log('request fail', error);
+        }
+      });
+
+    }
+
   },
 
   // 切换是否带有登录态
@@ -246,5 +349,93 @@ Page({
     }
     util.showBusy('信道连接中...')
     this.setData({ tunnelStatus: 'closed' })
+  },
+
+  cla(){
+    util.showBusy('ss');
+     wx.getUserInfo({
+                success: function(res) {
+                  console.log(res.userInfo)
+                }
+              })
   }
-})
+});
+
+function loginFu( that){
+    // 调用登录接口
+        console.log('start login');
+
+                        qcloud.login({
+                          data: {nickName: that.data.userInfo.nickName},
+                          success(result) {
+                            console.log('qcloud.login success ');
+                            console.log(result);
+                            if (result) {
+                              util.showSuccess('登录成功')
+                              that.setData({
+                                openId: result.openid,
+                                logged: true
+                              });
+                              //show the tabbar
+                              wx.showTabBar();
+
+
+                            } else {
+                              // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
+                                console.log('already logon and query the user record');
+                                qcloud.request({
+                                //qcloud.login({
+                                url: config.service.queryuserUrl,
+                                data: {
+                                        name: that.data.userInfo.nickName
+                                },
+                                login: true,
+                                success(result) {
+                                  util.showSuccess('再登录成功')
+                                  //collect data
+                                  app._openId=result.data[0].openId;
+                                  that.setData({
+                                    openId: result.data[0].openId
+                                  })
+                                  console.log('------>second login and request the user info' );
+                                  //show the tabBar
+                                  wx.showTabBar();
+                                  if(!result){
+                                      that.setData({
+                                        openId: result.data[0].openId,
+                                        logged: true
+                                      })
+                                      app._openid=that.data.openid;  console.log('app._openId'+app._openid);
+                                  };
+                                  //set UserInfo storage
+                                  that.data.userInfo.openId=result.data[0].openId;
+                                  wx.setStorage({
+                                            key: 'userRecords',
+                                            data: that.data.userInfo,
+                                            success: function (res) {
+                                              console.log('successfully story user info');
+                                              console.log(result.data[0]);
+                                            }
+                                          });
+
+                                },
+
+                                fail(error) {
+                                  util.showModel('请求失败', error)
+                                  console.log('request fail', error)
+                                }
+                              })
+                            }
+                          },
+
+                          fail(error) {
+                            util.showModel('登录失败', error)
+                            console.log('index 登录失败', error)
+                          }
+                        })
+
+
+
+}
+
+

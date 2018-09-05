@@ -7,13 +7,14 @@
     "pages/inputDataOne/inputDataOne",
     "pages/inputDataTwo/inputDataTwo",
     "pages/queryList/queryList",
+    "pages/queryDetail/queryDetail",
     "pages/chess/chess"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "My First APP",
+    "navigationBarTitleText": "肾透析小本",
     "navigationBarTextStyle":"black"
   }, 
   "tabBar": {

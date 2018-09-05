@@ -33,7 +33,7 @@ router.get('/message', controllers.message.get)
 router.post('/message', controllers.message.post)
 
 //get queryUser
-router.get('/queryuser', controllers.queryuserSv)
+router.get('/queryuser', controllers.user)
 
 //get demo
 router.get('/demo', controllers.demo)
@@ -45,8 +45,24 @@ router.get('/start', controllers.startInfoSv)
 router.post('/input', controllers.inputBeforeHSv.post)
 router.get('/input', controllers.inputBeforeHSv.get)
 
+//post input data two
+router.post('/inputtwo', controllers.inputAfterHSv.post)
+router.get('/inputtwo', controllers.inputAfterHSv.get)
+
+//post userInfo interface
+router.post('/newuser', controllers.checkUserSv)
+
+//get user H info
+router.get('/userhinfo', controllers.userSv)
+
+//get user all H data
+router.get('/allhdata', controllers.allRecordsSv)
+
 //test sample
 router.get('/aaa', controllers.aSample)
+
+//test nodejs
+router.get('/in', controllers.trySample)
 
 //404
 router.get('/404', async (ctx, next) => {

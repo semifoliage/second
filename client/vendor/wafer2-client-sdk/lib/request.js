@@ -34,7 +34,8 @@ var RequestError = (function () {
 
 function request(options) {
     //console.log(options.header);
-     
+    console.log('request.js ==>');
+    console.log(options.data.name);
     if (typeof options !== 'object') {
         var message = '请求传参应为 object 类型，但实际传了 ' + (typeof options) + ' 类型';
         throw new RequestError(constants.ERR_INVALID_PARAMS, message);
@@ -83,7 +84,7 @@ function request(options) {
 
             success: function (response) {
                 var data = response.data;
-
+                //result is  console.log(data[0]);
                 var error, message;
                 if (data && data.code === -1) {
                     Session.clear();

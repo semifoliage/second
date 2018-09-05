@@ -8,20 +8,61 @@
             background-size="cover"
         ></image>
         <view>             
-            <button class="userinfo-nickname" bindtap="login">{{logged ? userInfo.nickName : 'List Last H data'}}</button>
-            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
-        </view>
-        <image
-            class="userinfo-avatar"
-            src="{{logged ? userInfo.avatarUrl : '../../materials/user-unlogin.png'}}"
-            background-size="cover"
-        ></image>
-        <view>             
-            <button class="userinfo-nickname" bindtap="login">{{logged ? userInfo.nickName : 'List All data'}}</button>
-            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+            <button class="userinfo-nickname" bindtap=" ">{{logged ? userInfo.nickName : 'List Last H data'}}</button>
         </view>
     </view>
+<view class="search">
+<view class="section">
+    <view class="form">
+        <view class="input-block">
+            <input placeholder="" bindfocus="setIsSearching" bindblur="judgeIsNull" bindinput="finishedInput" value="{{searchValue}}"/>
+            <icon type="clear" style="display:{{isSearching? 'inline-block': 'none'}}" color="#F76260" size="16" bindtap="clearSearchContent"></icon>
+        </view>
+        <view class="search-block" style="display:{{isSearching? 'none': 'inline-block'}}">
+            <icon class="search-icon" color="#fff"></icon>
+            <text>请输入搜索内容</text>
+        </view>
+    </view>
+    <view class="toShop" bindtap="goToShop">
+        <icon class="shop-icon"></icon>
+    </view>
+</view>
+</view>
+<view class="header">
+<view class="headerLine"></view>
+<text class="headerTime">{{headerText}}</text>
+<view class="timeTab">
+    <block wx:for="{{showMonths}}" wx:key="month">
+        <view class="{{(index === monthIndex) ? 'active last everyTime' : 'everyTime'}}" bindtap="chooseMonth" data-month="{{item.monthIndex}}">
+            <text>{{item.monthCname}}</text>
+            <icon class="{{item.hasRecord? 'hasRecord': ''}}"></icon>
+        </view>
+    </block>
+</view>
+</view>
 
+    <view class="list">
+    <view class="all" wx:if="{{records.length > 0}}">
+        <block class="bookitem" wx:for="{{records}}" wx:key="idRecord" wx-if="{{ item.isShow}}">
+            <view class="bookInfo" bindtap="goToDetail" data-id="{{item.idRecord}}">
+                <text class="author">
+                <text class="text-underline">Date : </text>{{item.dateToH}}</text>
+                <text class="author">
+                    <text class="text-underline">Weight before H ： </text>{{item.weightBeforeH}}</text>
+                <text class="author">
+                    <text class="bookDes">Weight After H : </text>{{item.weightAfterH}}</text>
+                <text class="author">
+                    <text class="text-underline">H Weight : </text>{{item.weightToH}}</text>
+                <icon class="{{item.hasRead === 0? 'read-icon isRead': 'read-icon notRead'}}"></icon>
+            </view>
+
+        </block>
+    </view>
+    <view class="empty" wx:if="{{books.length === 0}}">
+        <image src="https://olpkwt43d.qnssl.com/myapp/err_tips/empty_err.png"></image>
+        <button bindtap="goToShop" plain="true" type="default">您还未添加书籍，快去书城看看</button>
+    </view>
+    </view>
     <!-- scroll view -->
     <view class="section section_gap">
       <view class="section__title">horizontal scroll</view>

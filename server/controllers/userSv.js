@@ -1,4 +1,4 @@
-//user.js
+//userSv.js
 /*
     this controller is to query the user info, such as openid, nickname, the weight of last H,  the date of last H,
     , the data of next H and whether is in H or not
@@ -26,30 +26,30 @@ module.exports = async (ctx, next) => {
     }*/
   var user={
         //openid: ctx.request.query.openid,
-        nickname: ctx.request.query.name
+        nickname: ctx.request.query.user
   }
 
-  ctx.response.type = 'text/html';
+  ctx.response.type = 'JSON';
   //responce body
-  ctx.response.body = await userInfo(ctx.request.query.name);
+  ctx.response.body = await userRecord(ctx.request.query.user);
 };
 
 
-function userInfo(user){
-    return new Promise ((resolve, reject)=>{
+function userRecord(user){
 
-    var queryString = 'select * from tAccount where nickName= ? ';
-    var data= user;
+    return new Promise ((resolve, reject)=>{
+    var queryString = 'select * from tHdata where nickname= ?' ;
+    var data=user;
     var results = [];
 
     db.query(queryString, [user], function(res){
-            for (var i in res){
-                results.push(res[i]);
-            };
-            resolve(results);
-        } );
+                for (var i in res){
+                    results.push(res[i]);
+                };
+                resolve(results);
+            } );
 
-    /*//initialize connection
+   /* //initialize connection
     connection.connect(function (err) {
       if (err) {
         console.error("error connection: ");
@@ -59,23 +59,23 @@ function userInfo(user){
     });
     //queryString = 'select * from uAccount';
 
-    connection.query(queryString, [data], function (err, rows, fields) {
-      if (err) throw err;
+    connection.query(queryString, [user], function (err, rows, fields) {
+      if (err) { reject (err); throw err;}
       console.log('----------Demo select --------');
       console.log(rows);
 
       for (i in rows) {
         results.push(rows[i]);
       };
-      resolve(results);
+
+    resolve(results);
     });
 
-    console.log('-------close connection------');
+    console.log('-------get to page------');
     connection.end();*/
     });
-   };
 
-
+   }
 
 
 

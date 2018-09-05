@@ -12,12 +12,12 @@
               <view class="flex-wrp " style="flex-direction:column">
                 <label class="txt_format">{{service.beforeWeight}}</label>
                 <input 
-                        placeholder='Please input' 
+                        id='beforeWeight'
+                        placeholder='{{beforeWeightNum}}'
                         class='input-format' 
                         bindinput="beforeWeightKeyInput" 
                         auto-focus
-                        type='number'
-                        style='number'
+
                         />
               </view>
               <view class="flex-wrp" style="flex-direction:column">
@@ -29,40 +29,44 @@
             <view class="flex-wrp bc_whitesmoke" style="flex-direction:row">
                 <view class="flex-wrp " style="flex-direction:column">
                   <label class="txt_format">{{service.bloodHigh}}</label>
-                  <input 
-                      placeholder='Please input' 
-                      class='input-format' 
-                      bindinput="changeInput"
+                  <input
+                      id='bloodHigh'
+                      placeholder='{{bloodHighNum}}'
+                      class='input-format'
                       type='number'
+                      bindinput="dataKeyInput"
                       auto-focus  >input</input>
                 </view>
                 <view class="flex-wrp" style="flex-direction:column">
                   <label class="txt_format">{{service.bloodLow}}</label>
-                  <input 
-                      placeholder='Please input' 
-                      class='input-format' 
-                      bindinput="changeInput"
+                  <input
+                      id='bloodLow'
+                      placeholder='{{bloodLowNum}}'
+                      class='input-format'
                       type='number'
+                      bindinput="dataKeyInput"
                       auto-focus>{{weightToHNum}}</input>
                 </view>
                 <view class="flex-wrp" style="flex-direction:column">
                   <label class="txt_format">{{service.heartBit}}</label>
-                  <input 
-                      placeholder='Please input' 
-                      class='input-format'  
-                      bindinput="changeInput"
+                  <input
+                      id='heartBit'
+                      placeholder='{{heartBitNum}}'
+                      class='input-format'
                       type='number'
+                      bindinput="dataKeyInput"
                       auto-focus style='number' >{{service.weightToHNum}}</input>
                 </view>
             </view>
-            
+
           </form>
           
           </view>
           
         </view>
         <icon type="search" size="20" color="rgb(0,255,255)"/>
-        <button id="item-{{id}}" plain='false' disabled="{{data.logged}}" bindtap="inputOneSave" >{{service.save}}</button>
-        <button plain='ture' disabled="{{logged}}" bindtap="inputOneSaveNext" >{{service.saveNext}}</button>
+        <button id="item-{{id}}" plain='false' disabled="{{saveStatus}}" bindtap="inputOneSave" >{{save}}</button>
+        <button plain='ture' disabled="{{nextStatus }}" bindtap="inputOneNext" >{{next}}</button>
+
    </form> 
 </view>

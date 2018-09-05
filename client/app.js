@@ -4,7 +4,9 @@ var config = require('./config')
 
 
 App({
-    logon_user:'',
+    _nickName:'',
+    _openid:'',
+    _userInfo:{},
     onLaunch: function () {
         qcloud.setLoginUrl(config.service.loginUrl)
     }

@@ -8,9 +8,12 @@
             background-size="cover"
         ></image>
          
-        <view>
+        <view >
             <text class="userinfo-nickname">{{ }}</text>
             <button open-type="getUserInfo" bindtap="login" bindgetuserinfo="getUserInfo">{{logged ? userInfo.nickName : '点击测试登录接口'}}</button>
+        </view>
+        <view>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
              
         </view>
@@ -18,8 +21,8 @@
         <block >
             <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-          </block>
-        
+        </block>
+
     </view>
 
 
