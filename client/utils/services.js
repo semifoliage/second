@@ -26,4 +26,16 @@ var isEmptyObject= (obj)=>{
 
 };
 
-module.exports = { isEmptyObject};
+var userInfoStorage=(obj)=>{
+    wx.setStorage({
+                    key: 'user',
+                    data: obj,
+                    success: function (res) {
+                      console.log('successfully story user ');
+                      console.log(res);
+                    }
+                  });
+};
+
+
+module.exports = { isEmptyObject, userInfoStorage};

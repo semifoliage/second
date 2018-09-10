@@ -88,7 +88,7 @@ async function post(ctx, next) {
           });
 
           connection.query(queryString, results, function (err, res) {
-            if (err) {ctx.body=error; throw err;}
+            if (err) {ctx.body=err; throw err;}
 
             console.log('Last record insert id:');
           });

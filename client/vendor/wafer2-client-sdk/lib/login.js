@@ -3,6 +3,7 @@ var utils = require('./utils');
 var constants = require('./constants');
 var Session = require('./session');
 var conf = require('../../../config');
+var services=require('../../../utils/services.js')
 
 var urlLink = conf.service.loginUrl;
 //console.log(urlLink)
@@ -65,13 +66,13 @@ var getWxLoginResult = function getLoginCode(data, callback) {
                 success: function (res) {
                   // 登录成功
                   if (res.statusCode === 200) {
-                    console.log(res.data.sessionId)// 服务器回包内容
+                    //console.log(res.data.sessionkey)// 服务器回包内容
                   };
                   //collect results
-                  console.log('login result');
-                  console.log(res.data);
+                  console.log('login result collectd done');
+                  //console.log(res.data);
                   var resultString=res.data;
-                  console.log(typeof(resultString));
+                  //console.log(typeof(resultString));
                   if (typeof(resultString)=='string'){
                       var result=resultString.split('}');
                       var resultObj = JSON.parse(result[0] + '}');
@@ -81,13 +82,10 @@ var getWxLoginResult = function getLoginCode(data, callback) {
 
                   Session.set(resultString.session_key);
                   //set app global data
-                  //app._openId=resultString.openid;
+                  //app._openid=resultString.openId;
                   //app._nickName=resultString.nickName;
                   //add to callback
-                  callback(null, {
-                    openid: resultString.openid,
-                    session_key: resultString.session_key
-                  });
+                  callback(null, resultString);
 
                   return resultString;
                 },
@@ -129,15 +127,17 @@ var defaultOptions = {
  */
 var login = function login(options) {
     
-
+console.log(options);
     options = utils.extend({}, defaultOptions, options);
-
+    console.log('loginjs-->login start');
+    //console.log(options);
     if (!defaultOptions.loginUrl) {
         options.fail(new LoginError(constants.ERR_INVALID_PARAMS, '登录错误：缺少登录地址，请通过 setLoginUrl() 方法设置登录地址'));
         return;
     }
-    console.log(options.data);
+
     var doLogin = () => getWxLoginResult(options.data.nickName, function (wxLoginError, wxLoginResult) {
+        //console.log(wxLoginResult);
         if (wxLoginError) {
             options.fail(wxLoginError);
             return;
@@ -146,7 +146,12 @@ var login = function login(options) {
         
         var _openid = wxLoginResult.openid;
         var _sessionkey=wxLoginResult.session_key;
-        options.success(wxLoginResult.openid);
+        console.log('wxloginresult collected ');
+        console.log(wxLoginResult);
+        options.success(wxLoginResult);
+
+        //store the wxLoginResult to storage
+        //services.userInfoStorage(wxLoginResult);
 
 
 

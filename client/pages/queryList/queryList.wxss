@@ -113,22 +113,46 @@ page {
   top: 17rpx;
   z-index: 999; }
 
-.booklist-container .search .search-block {
-  position: absolute;
-  top: 14rpx;
-  left: 20rpx;
-  height: 50rpx;
-  line-height: 100%;
+.search-block {
+  flex-direction: row; 
+  display: flex; 
+  justify-content: flex-start;
   font-size: 32rpx;
-  color: #ddd; }
+  color:silver; }
 
+.picker {
+  font-size: 32rpx;
+  border-left: 30rpx;
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+
+}
+.textBetweenPicker {
+  font-size: 32rpx;
+  border-left: 30rpx;
+  padding: 10rpx;
+  padding-left: 0rpx;
+  padding-right:0rpx;
+  font-weight: bold;
+}
+.search-icon {
+  width: 50rpx;
+  display: inline-block;
+  height: 100%;
+  background-size: 230rpx 230rpx;
+  background-position: -90rpx -90rpx;
+  vertical-align: middle; 
+  padding-left: 10rpx;
+  }
 .booklist-container icon.search-icon {
   width: 50rpx;
   display: inline-block;
   height: 100%;
   background-size: 230rpx 230rpx;
   background-position: -90rpx -90rpx;
-  vertical-align: middle; }
+  vertical-align: middle; 
+  padding-left: 10rpx;}
 
 .booklist-container .toShop {
   width: 80rpx;

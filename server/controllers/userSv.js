@@ -38,7 +38,7 @@ module.exports = async (ctx, next) => {
 function userRecord(user){
 
     return new Promise ((resolve, reject)=>{
-    var queryString = 'select * from tHdata where nickname= ?' ;
+    var queryString = 'select * from tHdata where openId= ?' ;
     var data=user;
     var results = [];
 

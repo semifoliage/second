@@ -8,20 +8,30 @@
             background-size="cover"
         ></image>
         <view>             
-            <button class="userinfo-nickname" bindtap=" ">{{logged ? userInfo.nickName : 'List Last H data'}}</button>
+            <text class="userinfo-nickname" bindtap=" ">{{logged ? userInfo.nickName : 'List Last H data'}}</text>
         </view>
     </view>
-<view class="search">
+<view class="searchs">
 <view class="section">
     <view class="form">
         <view class="input-block">
             <input placeholder="" bindfocus="setIsSearching" bindblur="judgeIsNull" bindinput="finishedInput" value="{{searchValue}}"/>
             <icon type="clear" style="display:{{isSearching? 'inline-block': 'none'}}" color="#F76260" size="16" bindtap="clearSearchContent"></icon>
         </view>
-        <view class="search-block" style="display:{{isSearching? 'none': 'inline-block'}}">
-            <icon class="search-icon" color="#fff"></icon>
-            <text>请输入搜索内容</text>
-            <button>lalasecond</button>
+        <view class="search-block" >
+           <text class="textBetweenPicker"> h Date from </text>             
+            <picker id='lastHDate' mode="date" value="{{lastHDate}}" start="2018-05-01" end="2020-09-01" bindchange="bindDateChange">
+                <view class="picker">
+                      {{lastHDate}}
+                </view>
+            </picker>
+            <text class="textBetweenPicker"> to</text>
+            <picker id='lastHDate' mode="date" value="{{lastHDate}}" start="2018-05-01" end="2020-09-01" bindchange="bindDateChange">
+                <view class="picker" >
+                     {{lastHDate}}
+                </view>
+            </picker>
+            <icon class="search-icon" color="#aaa" type='search'></icon>
         </view>
     </view>
     <view class="toShop" bindtap="goToShop">

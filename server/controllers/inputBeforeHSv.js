@@ -86,8 +86,8 @@ async function post(ctx, next) {
             console.log('Last record insert id:');
           });
 
-            //update the data to the tHdata table  with the status change
-            var queryStringUpdate = 'UPDATE tHdata SET NextHDate= ? onH= ? WhERE openId= ? ';
+            //update the data to the tHdata     table  with the status change
+            var queryStringUpdate = 'UPDATE tHdata SET NextHDate= ? , onH= ? WHERE openId= ? ';
             var nextData= [
                 results.dateToH,
                 'Y',

@@ -8,6 +8,7 @@ var todayDate = new Date()
 Page({
   data: {
     userInfo: {},
+    userDBinfo:{},
     hasUserInfo: false,
     logged: false,
     openId:'',
@@ -26,6 +27,7 @@ onLoad: function(options){
     wx.getStorage({
           key: 'userRecords',
           success: function (res) {
+            console.log(res);
             that.setData({
                 openId: res.data.openId,
                 userInfo: res.data,
@@ -34,7 +36,12 @@ onLoad: function(options){
             app._userInfo=res.data;
             app._openId=res.data.openId;
             wx.showTabBar();
-             }
+             },
+           fail: function(err){
+             console.log('storage userInfo can not be reload.  login is needed. ');
+             util.showBusy('login is required');
+             loginFu();
+           }
           });
 },
 
@@ -120,6 +127,92 @@ onLoad: function(options){
 
       }
      });
+
+  },
+  getUserInfo_useless: function(e){
+        app._nickName = e.detail.userInfo.nickName;
+        app._userInfo = e.detail.userInfo;
+        var that=this;
+        this.setData({
+          userInfo: e.detail.userInfo,
+          hasUserInfo: true,
+          logged: true
+        });
+        app._nickName= e.detail.userInfo.nickName;
+        console.log('index getUserInfo e.detail  collected ');
+
+        //if (this.data.logged) return
+
+        util.showBusy('正在登录')
+
+        const session = qcloud.Session.get()
+
+        if (session) {
+            // 第二次登录
+            // 或者本地已经有登录态
+            // 可使用本函数更新登录态
+            qcloud.request({
+                url: config.service.queryuserUrl,
+                data: {
+                        name: that.data.userInfo.nickName
+                },
+                login: true,
+                success: result => {
+
+                  util.showSuccess('再登录成功')
+                  //collect data
+                  app._openId=result.data[0].openId;
+                  this.setData({
+                    openId: result.data[0].openId
+                  })
+                  console.log('------>second login and request the user info' );
+                  //show the tabBar
+                  wx.showTabBar();
+                  if(!result){
+                      this.setData({
+                        openId: result.data[0].openId,
+                        logged: true
+                      })
+                      app._openid=that.data.openid;  console.log('app._openId'+app._openid);
+                  };
+                  //set UserInfo storage
+                  this.data.userInfo.openId=result.data[0].openId;
+                  wx.setStorage({
+                            key: 'userRecords',
+                            data: this.data.userInfo,
+                            success: function (res) {
+                              console.log('successfully story user info');
+                              console.log(result.data[0]);
+                            }
+                          });
+                },
+                fail: err => {
+                    console.error(err)
+                    util.showModel('登录错误', err.message)
+                }
+            })
+        } else {
+            // 首次登录
+            qcloud.login({
+                data: {nickName: this.data.userInfo.nickName},
+                success: result => {
+                    this.setData({ userDBinfo: result, logged: true });
+                    app._openId=res.openId;
+                    util.showSuccess('登录成功');
+                    hat.setData({
+                                      openId: result.openid,
+                                      logged: true
+                                      });
+                      console.log(result.openid);
+                                   //show tabbar
+                      wx.showTabBar();
+                },
+                fail: err => {
+                    console.error(err)
+                    util.showModel('登录错误', err.message)
+                }
+            })
+        }
 
   },
 
@@ -365,74 +458,87 @@ function loginFu( that){
     // 调用登录接口
         console.log('start login');
 
-                        qcloud.login({
-                          data: {nickName: that.data.userInfo.nickName},
-                          success(result) {
-                            console.log('qcloud.login success ');
-                            console.log(result);
-                            if (result) {
-                              util.showSuccess('登录成功')
-                              that.setData({
-                                openId: result.openid,
-                                logged: true
+        qcloud.login({
+          data: {nickName: that.data.userInfo.nickName},
+          success(result) {
+            console.log('qcloud.login success ');
+            console.log(result);
+            if (result) {
+              util.showSuccess('登录成功')
+              that.setData({
+                              openId: result.openid,
+                              logged: true
                               });
-                              //show the tabbar
-                              wx.showTabBar();
+               //data update
+              console.log('storage the user info and openId');
+              app._openId=result.openid;
+              var newData=that.data.userInfo;
+              newData.openId= result.openid;
+              var dataMerged=Object.assign({}, newData, that.data.userInfo);
+              wx.setStorage({
+                              key: 'userRecords',
+                              data: dataMerged,
+                              success: function (res) {
+                                console.log('successfully story user info');
+                                //console.log(result.data[0]);
+                              }
+                            });
+              //show tabbar
+              wx.showTabBar();
 
-
-                            } else {
-                              // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-                                console.log('already logon and query the user record');
-                                qcloud.request({
-                                //qcloud.login({
-                                url: config.service.queryuserUrl,
-                                data: {
-                                        name: that.data.userInfo.nickName
-                                },
-                                login: true,
-                                success(result) {
-                                  util.showSuccess('再登录成功')
-                                  //collect data
-                                  app._openId=result.data[0].openId;
-                                  that.setData({
-                                    openId: result.data[0].openId
-                                  })
-                                  console.log('------>second login and request the user info' );
-                                  //show the tabBar
-                                  wx.showTabBar();
-                                  if(!result){
-                                      that.setData({
-                                        openId: result.data[0].openId,
-                                        logged: true
-                                      })
-                                      app._openid=that.data.openid;  console.log('app._openId'+app._openid);
-                                  };
-                                  //set UserInfo storage
-                                  that.data.userInfo.openId=result.data[0].openId;
-                                  wx.setStorage({
-                                            key: 'userRecords',
-                                            data: that.data.userInfo,
-                                            success: function (res) {
-                                              console.log('successfully story user info');
-                                              console.log(result.data[0]);
-                                            }
-                                          });
-
-                                },
-
-                                fail(error) {
-                                  util.showModel('请求失败', error)
-                                  console.log('request fail', error)
-                                }
-                              })
+            } else {
+              // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
+                console.log('already logon and query the user record');
+                qcloud.request({
+                //qcloud.login({
+                url: config.service.queryuserUrl,
+                data: {
+                        name: that.data.userInfo.nickName
+                },
+                login: true,
+                success(result) {
+                  util.showSuccess('再登录成功')
+                  //collect data
+                  app._openId=result.data[0].openId;
+                  that.setData({
+                    openId: result.data[0].openId
+                  })
+                  console.log('------>second login and request the user info' );
+                  //show the tabBar
+                  wx.showTabBar();
+                  if(!result){
+                      that.setData({
+                        openId: result.data[0].openId,
+                        logged: true
+                      })
+                      app._openid=that.data.openid;  console.log('app._openId'+app._openid);
+                  };
+                  //set UserInfo storage
+                  that.data.userInfo.openId=result.data[0].openId;
+                  wx.setStorage({
+                            key: 'userRecords',
+                            data: that.data.userInfo,
+                            success: function (res) {
+                              console.log('successfully story user info');
+                              console.log(result.data[0]);
                             }
-                          },
+                          });
 
-                          fail(error) {
-                            util.showModel('登录失败', error)
-                            console.log('index 登录失败', error)
-                          }
-                        })
+                },
+
+                fail(error) {
+                  util.showModel('请求失败', error)
+                  console.log('request fail', error)
+                }
+              })
+            }
+          },
+
+          fail(error) {
+            util.showModel('登录失败', error)
+            console.log('index 登录失败', error)
+          }
+        })
 
 
 

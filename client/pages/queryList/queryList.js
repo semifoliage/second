@@ -12,6 +12,7 @@ Page({
     nickName:'',
     userInfo:'',
     openId:'',
+    lastHDate: '2018-08-19',
     takeSession: false,
     requestResult: '',
     imgUrl: '',

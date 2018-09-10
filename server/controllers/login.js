@@ -98,7 +98,7 @@ async function checkUser ( user){
           var queryJson=JSON.stringify(query);
           var queryStatus='';
 
-        if(queryJson){
+        if(queryJson=='[]'){
             console.log('user does not exist, user data and initiate data are created');
 
             //create new user
@@ -118,10 +118,11 @@ async function checkUser ( user){
             console.log('user exist ');
             //remove the sessionkey info and add query info
             var newQuery=query[0];
-            //delete newQuery[0].sessionkey;
-            newQuery[0].userStatus= '1';
+            console.log(newQuery);
+            //delete newQuery.sessionkey;
+            newQuery.userStatus= '1';
 
-            return(JSON.stringify(newQuery[0]));
+            return(newQuery);
         }
 
 
@@ -142,6 +143,7 @@ async function checkUser ( user){
             "role2": '1'
         };
         db.insert(sql, data, function(res){
+            console.log('insert new user to tAccount table')
             return res;
         });
 
@@ -161,6 +163,7 @@ async function checkUser ( user){
             "onH": 'N'
         };
         db.insert(sql, data, function(res){
+            console.log('insert initial data to tHData table')
             return res;
         })
 
@@ -176,6 +179,9 @@ function existUser(sql, user){
                     for (var i in res){
                         data.push(res[i]);
                     };
+                    console.log('check user exist or not-->')
+                    //console.log(sql + user);
+                    //console.log(data);
                    resolve(data);
                 });
 

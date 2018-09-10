@@ -38,7 +38,7 @@
 <view class="comments">
     <view class="title">精彩评论<text class="add-comment" bindtap="toWriteComment">写评论</text>
     </view>
-    <button bindtap="nex">lalal</button>
+    <button bindtap="nex">lalal</button>+++
     <view class="comment-list">
         <view wx:if="{{comments.length > 0}}" class="comment-item" wx:for="{{comments}}" data-commentid="{{item.rootComment.commentid}}" wx:key="{{item.rootComment.commentid}}">
             <image class="headImg" src="{{item.rootComment.avatar}}" mode="scaleToFill"></image>
